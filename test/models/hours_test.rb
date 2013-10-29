@@ -23,20 +23,20 @@ class HoursTest < MiniTest::Unit::TestCase
   end
 
   def test_insert_day
-    Database::Hours.insert_day('Monday', Time.new(6), Time.new(17))
-    assert_equal Time.new(6), Database::Hours.opening_time("Monday")
+    Database::Hours.insert_day('Monday', 6, 17)
+    assert_equal 6, Database::Hours.opening_time("Monday")
   end
 
   def test_table_can_adjust_day
-    Database::Hours.insert_day("Monday", Time.new(6), Time.new(8))
-    Database::Hours.adjust_day('Monday', Time.new(8), Time.new(18))
-    assert_equal Time.new(8), Database::Hours.opening_time("Monday")
+    Database::Hours.insert_day("Monday", 6, 8)
+    Database::Hours.adjust_day('Monday', 8, 18)
+    assert_equal 8, Database::Hours.opening_time("Monday")
   end
 
   def test_update_method
-    Database::Hours.update("Monday", Time.new(8), Time.new(8))
-    assert_equal Time.new(8), Database::Hours.opening_time("Monday")
-    Database::Hours.update("Monday", Time.new(9), Time.new(8))
-    assert_equal Time.new(9), Database::Hours.opening_time("Monday")
+    Database::Hours.update("Monday", 8, 8)
+    assert_equal 8, Database::Hours.opening_time("Monday")
+    Database::Hours.update("Monday", 9, 8)
+    assert_equal 9, Database::Hours.opening_time("Monday")
   end
 end

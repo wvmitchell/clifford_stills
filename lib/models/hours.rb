@@ -1,15 +1,8 @@
-require 'sequel'
+require './lib/models/db_helper'
 
 module Database
   class Hours
-
-    def self.db_connection
-      if ENV['rack_env'] == 'test'
-        @db_connection ||= Sequel.sqlite('db/database_test')
-      else
-        @db_connection ||= Sequel.sqlite('db/database_dev')
-      end
-    end
+    extend DB_helper
 
     def self.insert_day(day, open, close)
       db_connection.from(:hours).insert(day: day, opens_at: open, closes_at: close)
