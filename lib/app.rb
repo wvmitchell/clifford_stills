@@ -20,9 +20,18 @@ class ClyffordStillsApp < Sinatra::Base
     erb :building
   end
 
+  get '/hours' do
+    if Database::Hours.db_connection.table_exists?(:hours)
+      days = Database::Hours.db_connection.from(:hours)
+    else
+      days = []
+    end
+    erb :hours, locals: {days: days}
+  end
+
   # ADMIN ROUTES
   get '/admin/hours' do
-    #erb :admin_hours
+    erb :admin_hours
   end
 
   post '/admin/hours' do

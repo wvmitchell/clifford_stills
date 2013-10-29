@@ -37,8 +37,8 @@ module Database
         db_connection.create_table :hours do
           primary_key :id
           String :day
-          Time :opens_at
-          Time :closes_at
+          Integer :opens_at
+          Integer :closes_at
         end
       end
     end

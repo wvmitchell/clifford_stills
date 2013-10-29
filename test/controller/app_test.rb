@@ -11,6 +11,12 @@ class ClyffordStillsAppTest < MiniTest::Test
     ClyffordStillsApp
   end
 
+  def teardown
+    if Database::Hours.db_connection.table_exists?(:hours)
+      Database::Hours.db_connection.drop_table(:hours)
+    end
+  end
+
   def test_index
     get '/'
     assert last_response.ok?
@@ -42,5 +48,10 @@ class ClyffordStillsAppTest < MiniTest::Test
     Database::Hours.create_table_if_none
     post '/admin/hours', :day => 'Monday', :opens_at => open, :closes_at => close
     assert_equal open, Database::Hours.opening_time('Monday')
+  end
+
+  def test_hours_page_exists
+    get '/hours'
+    assert last_response.ok?
   end
 end

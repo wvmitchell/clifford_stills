@@ -7,12 +7,7 @@ class HoursTest < MiniTest::Unit::TestCase
 
   def setup
     @db = Database::Hours.db_connection
-    db.create_table :hours do
-      primary_key :id
-      String :day
-      Time :opens_at
-      Time :closes_at
-    end
+    Database::Hours.create_table_if_none
   end
 
   def teardown
