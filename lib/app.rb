@@ -29,6 +29,10 @@ class ClyffordStillsApp < Sinatra::Base
     erb :hours, locals: {days: days}
   end
 
+  get '/directions' do
+    erb :directions
+  end
+
   # ADMIN ROUTES
   get '/admin/hours' do
     erb :admin_hours
