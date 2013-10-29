@@ -6,4 +6,8 @@ class ClyffordStillsApp < Sinatra::Base
     erb :index
   end
 
+  get '/collection' do
+    erb :collection
+  end
+
 end
