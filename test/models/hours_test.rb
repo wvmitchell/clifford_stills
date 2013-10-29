@@ -1,0 +1,40 @@
+require './test/test_helper.rb'
+require './lib/models/hours'
+
+class HoursTest < MiniTest::Unit::TestCase
+
+  attr_reader :db
+
+  def setup
+    @db = Database::Hours.db_connection
+    db.create_table :hours do
+      primary_key :id
+      String :day
+      Time :opens_at
+      Time :closes_at
+    end
+  end
+
+  def teardown
+    db.drop_table(:hours)
+  end
+
+  def test_it_exists
+    assert Database::Hours
+  end
+
+  def test_table_hours_exists
+    assert db.table_exists?(:hours)
+  end
+
+  def test_insert_day
+    Database::Hours.insert_day('Monday', Time.new(6), Time.new(17))
+    assert_equal Time.new(6), Database::Hours.opening_time("Monday")
+  end
+
+  def test_table_can_adjust_day
+    Database::Hours.insert_day("Monday", Time.new(6), Time.new(8))
+    Database::Hours.adjust_day('Monday', Time.new(8), Time.new(18))
+    assert_equal Time.new(8), Database::Hours.opening_time("Monday")
+  end
+end
