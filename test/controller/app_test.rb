@@ -54,4 +54,9 @@ class ClyffordStillsAppTest < MiniTest::Test
     get '/hours'
     assert last_response.ok?
   end
+
+  def test_directions_page_exists
+    get '/directions'
+    assert last_response.ok?
+  end
 end
