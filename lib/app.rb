@@ -42,5 +42,9 @@ class ClyffordStillsApp < Sinatra::Base
     Database::Hours.update(params[:day], params[:opens_at], params[:closes_at])
     redirect '/admin/hours'
   end
+  
+  get '/clyfford-still' do 
+    erb :clyfford_still
+  end
 
 end
