@@ -43,8 +43,8 @@ class ClyffordStillsAppTest < MiniTest::Test
   end
 
   def test_admin_hours_changes_table
-    open = Time.new(5)
-    close = Time.new(18)
+    open = 5
+    close = 18
     Database::Hours.create_table_if_none
     post '/admin/hours', :day => 'Monday', :opens_at => open, :closes_at => close
     assert_equal open, Database::Hours.opening_time('Monday')
