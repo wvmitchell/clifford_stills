@@ -14,4 +14,8 @@ class ClyffordStillsApp < Sinatra::Base
     erb :building
   end
 
+  get '/clyfford-still' do 
+    erb :clyfford_still
+  end
+
 end
