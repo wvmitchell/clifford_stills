@@ -2,6 +2,10 @@ class ClyffordStillsApp < Sinatra::Base
 
   set :public, 'public'
 
+  get '/' do
+    #index page
+  end
+
   get '/museum' do
     erb :index
   end
@@ -10,7 +14,7 @@ class ClyffordStillsApp < Sinatra::Base
     erb :collection
   end
 
-  get '/museum/about-building' do 
+  get '/building' do
     erb :building
   end
 
