@@ -37,4 +37,11 @@ class HoursTest < MiniTest::Unit::TestCase
     Database::Hours.adjust_day('Monday', Time.new(8), Time.new(18))
     assert_equal Time.new(8), Database::Hours.opening_time("Monday")
   end
+
+  def test_update_method
+    Database::Hours.update("Monday", Time.new(8), Time.new(8))
+    assert_equal Time.new(8), Database::Hours.opening_time("Monday")
+    Database::Hours.update("Monday", Time.new(9), Time.new(8))
+    assert_equal Time.new(9), Database::Hours.opening_time("Monday")
+  end
 end

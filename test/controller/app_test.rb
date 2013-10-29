@@ -1,7 +1,8 @@
 require './test/test_helper.rb'
 require 'sinatra/base'
 require 'rack/test'
-require'./lib/app'
+require './lib/app'
+require './lib/models/hours'
 
 class ClyffordStillsAppTest < MiniTest::Test
   include Rack::Test::Methods
@@ -30,4 +31,16 @@ class ClyffordStillsAppTest < MiniTest::Test
     assert last_response.ok?
   end
 
+  def test_admin_hours_page_exists
+    get '/admin/hours'
+    assert last_response.ok?
+  end
+
+  def test_admin_hours_changes_table
+    open = Time.new(5)
+    close = Time.new(18)
+    Database::Hours.create_table_if_none
+    post '/admin/hours', :day => 'Monday', :opens_at => open, :closes_at => close
+    assert_equal open, Database::Hours.opening_time('Monday')
+  end
 end

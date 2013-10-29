@@ -1,3 +1,5 @@
+require './lib/models/hours'
+
 class ClyffordStillsApp < Sinatra::Base
 
   set :public, 'public'
@@ -7,7 +9,7 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   get '/museum' do
-    erb :index
+    erb :museum
   end
 
   get '/collection' do
@@ -16,6 +18,16 @@ class ClyffordStillsApp < Sinatra::Base
 
   get '/building' do
     erb :building
+  end
+
+  # ADMIN ROUTES
+  get '/admin/hours' do
+    #erb :admin_hours
+  end
+
+  post '/admin/hours' do
+    Database::Hours.update(params[:day], params[:opens_at], params[:closes_at])
+    redirect '/admin/hours'
   end
 
 end
