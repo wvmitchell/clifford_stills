@@ -65,7 +65,7 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   get '/contact-us' do
-    erb :contact_us_form
+    erb :contact_us
   end
 
   post '/contact-us' do
@@ -81,7 +81,7 @@ class ClyffordStillsApp < Sinatra::Base
     redirect '/thank-you'
   end
 
-  get '/thank-you'
+  get '/thank-you' do
     erb :thank_you
   end
 
