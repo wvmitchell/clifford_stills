@@ -50,5 +50,9 @@ module Database
     def self.public_only
       db_connection.from(:programs).where(type: "Public")
     end
+
+    def self.instructor(course)
+      db_connection.from(:programs).where(name: course).to_a.first[:instructor]
+    end
   end
 end

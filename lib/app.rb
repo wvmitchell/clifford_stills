@@ -33,6 +33,10 @@ class ClyffordStillsApp < Sinatra::Base
     erb :directions
   end
 
+  get '/clyfford-still' do 
+    erb :clyfford_still
+  end
+
   # ADMIN ROUTES
   get '/admin/hours' do
     erb :admin_hours
@@ -41,6 +45,25 @@ class ClyffordStillsApp < Sinatra::Base
   post '/admin/hours' do
     Database::Hours.update(params[:day], params[:opens_at], params[:closes_at])
     redirect '/admin/hours'
+  end
+
+  get '/admin/programs' do
+    erb :admin_programs
+  end
+
+  post '/admin/programs' do
+    Database::Programs.update(params[:name], 
+                              params[:description], 
+                              params[:instructor],
+                              params[:start_date],
+                              params[:end_date],
+                              params[:hour],
+                              params[:type])
+    redirect '/admin/programs'
+  end
+
+  get '/programs' do
+    erb :programs
   end
 
 end

@@ -3,12 +3,13 @@ require 'sinatra/base'
 require 'rack/test'
 require './lib/app'
 require './lib/models/hours'
+require './lib/models/programs'
 
 class ClyffordStillsAppTest < MiniTest::Test
   include Rack::Test::Methods
 
   def app
-    ClyffordStillsApp
+    ClyffordStillsApp    
   end
 
   def teardown
@@ -34,6 +35,29 @@ class ClyffordStillsAppTest < MiniTest::Test
 
   def test_building_route
     get '/building'
+    assert last_response.ok?
+  end
+
+  def test_admin_programs_page_exists
+    get '/admin/programs'
+    assert last_response.ok?    
+  end
+
+  def test_admin_programs_changes_table
+    description = 'Terrible Program that does not help'
+    instructor = 'Batman'
+    Database::Programs.create_table_if_none
+    post '/admin/hours', :name => 'Best Program', 
+                         :description => 'Awesome programs where you and your whole family can interact',
+                         :instructor => 'Scuba Steve',
+                         :start_date => 10-31-13,
+                         :end_date => 11-15-13,
+                         :hour => 24
+    assert_equal 'Scuba Steve', Database::Programs.instructor('Best Program')
+  end
+
+  def test_programs_page_exists
+    get '/programs'
     assert last_response.ok?
   end
 
