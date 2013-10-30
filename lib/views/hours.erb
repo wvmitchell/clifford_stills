@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 
@@ -113,9 +114,9 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 <td style="vertical-align: top;">&nbsp;</td>
 <td style="vertical-align: top;">
 <p><strong>HOURS:</strong></p>
-
+  Closed on Monday<br/>
   <% days.each do |day| %>
-    <p><%= day[:day] %>: <%= day[:opens_at] %> a.m. - <%= day[:closes_at] % 12 %> p.m.</p>
+    <%= day[:day] %>: <%= day[:opens_at] %> a.m. - <%= day[:closes_at] % 12 %> p.m.<br/>
   <% end %>
 
 </td>
@@ -123,11 +124,8 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 </tbody>
 </table>
 <p>The Museum is closed on Mondays, Thanksgiving, Christmas and New Years Day.</p>
-<p>Purchase your tickets online, and save $1 on each adult admission.</p>
-<p><a href="https://46007.blackbaudhosting.com/46007/tickets?tab=3&amp;txobjid=1b87ef14-b89d-4a5c-803f-79124cc2bcd8" target="_blank"><img alt="" src="/sites/default/files/editor-images/buynowbutton.png" style="width: 81px; height: 25px;" /></a></p>
 <p>The Museum is offering free admission to furloughed federal employees for the duration of the government shutdown.&nbsp;</p>
-<p><strong>GROUP RESERVATIONS:&nbsp; </strong></p>
-<p>Discounted rates are available for adults, seniors and college students in groups of 10 or more. Advanced reservations are required. <a href="http://www.clyffordstillmuseum.org/visit-us/tours-group-visits">Click here</a> to learn more.</p>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -167,12 +165,12 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
   <div id="block-menu-primary-links" class="block block-menu first region-odd even region-count-1 count-2">
   
   <div class="content">
-    <ul class="menu"><li class="expanded first active-trail"><a href="/visit-us" title="VISIT US">VISIT US</a><ul class="menu"><li class="leaf first active-trail"><a href="/hours" title="TICKETS, ADMISSION &amp; HOURS" class="active">tickets, admission &amp; hours</a></li>
+    <ul class="menu"><li class="expanded first active-trail"><a href="/hours" title="VISIT US">VISIT US</a><ul class="menu"><li class="leaf first active-trail"><a href="/hours" title="TICKETS, ADMISSION &amp; HOURS" class="active">tickets, admission &amp; hours</a></li>
 <li class="leaf"><a href="/directions" title="DIRECTIONS">directions</a></li>
 </ul></li>
 <li class="collapsed"><a href="/museum" title="">MUSEUM</a></li>
 <li class="leaf"><a href="/clyfford-still" title="CLYFFORD STILL">CLYFFORD STILL</a></li>
-<li class="collapsed"><a href="/programs-and-events" title="">PROGRAMS &amp; EVENTS</a></li>
+<li class="collapsed"><a href="/programs" title="">PROGRAMS &amp; EVENTS</a></li>
 <li class="leaf last"><a href="/gallery/5" title="">PHOTO GALLERY</a></li>
 </ul>  </div>
 
