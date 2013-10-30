@@ -1,8 +1,9 @@
 <form action="/contact-us" method="POST">
   <label for="name">Name</label>
-  <input name="user[:name]">
+  <input type="text" name="user[name]">
   <label for="email">Email</label>
-  <input name="user[:email]">
+  <input type="text" name="user[email]">
   <label for="issue">Describe your issue</label>
-  <textarea name="user[:issue]"></textarea>
+  <textarea name="user[issue]"></textarea>
+  <input type="submit" value="Submit Feedback"/>
 </form>
