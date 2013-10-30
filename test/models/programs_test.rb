@@ -19,7 +19,7 @@ class ProgramsTest < Minitest::Test
   end
 
   def test_it_adds_a_new_record_to_db
-    params = {name: 'Painting', description: 'How to paint', instuctor: 'bob'}
+    params = {name: 'Painting', description: 'How to paint', instructor: 'bob'}
     Database::Programs.insert(params)
     assert_equal 'Painting', db.where(name: 'Painting').limit(1).first[:name]
   end
@@ -46,5 +46,11 @@ class ProgramsTest < Minitest::Test
     Database::Programs.public_only.each do |program|
       assert_equal 'Public', program[:type]
     end
+  end
+
+  def test_instructor_method
+    params = {name: 'Painting', description: 'How to paint', instructor: 'bob'}
+    Database::Programs.insert(params)
+    assert_equal 'bob', Database::Programs.instructor('Painting')
   end
 end
