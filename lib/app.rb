@@ -6,7 +6,7 @@ class ClyffordStillsApp < Sinatra::Base
   set :public, 'lib/public'
 
   get '/' do
-    #index page
+    erb :index
   end
 
   get '/museum' do

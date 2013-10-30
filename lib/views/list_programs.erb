@@ -1,4 +1,5 @@
   <% programs.each do |program| %>
+  <div>
     <h4><%= program[:name] %></h4>
     <p><%= program[:description] %></p>
     <p><%= program[:instructor] %></p>
@@ -6,5 +7,6 @@
     <p><%= program[:end_date] %></p>
     <p><%= program[:hour] > 12 ? program[:hour] % 12 : program[:hour] %>
     <p><%= program[:type] %></p>
+  </div>
   <% end %>
 
