@@ -13,7 +13,6 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
-    erubis (2.7.0)
     ffi (1.9.0)
     formatador (0.2.4)
     guard (2.1.1)
@@ -90,7 +89,6 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  erubis
   guard
   guard-minitest
   minitest
