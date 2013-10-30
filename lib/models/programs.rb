@@ -54,5 +54,13 @@ module Database
     def self.instructor(course)
       db_connection.from(:programs).where(name: course).to_a.first[:instructor]
     end
+
+    def self.all
+      if db_connection.table_exists?(:programs)
+        db_connection.from(:programs)
+      else
+        []
+      end
+    end
   end
 end

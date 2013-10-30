@@ -115,7 +115,7 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 <p><strong>HOURS:</strong></p>
 
   <% days.each do |day| %>
-    <p><%= day[:day] %>: <%= day[:opens_at] %> a.m - <%= day[:closes_at] % 12 %> p.m.</p>
+    <p><%= day[:day] %>: <%= day[:opens_at] %> a.m. - <%= day[:closes_at] % 12 %> p.m.</p>
   <% end %>
 
 </td>

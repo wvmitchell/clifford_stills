@@ -91,23 +91,23 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 <div class="content">
   <form action="/admin/programs" method="POST">
     <label for="name">Program Name</label>
-    <input type="text" name="name"/><br/>
+    <input type="text" name="program[name]"/><br/>
     <label for="description">Description</label>
-    <textarea name="description"></textarea><br/>
+    <textarea name="program[description]"></textarea><br/>
     <label for="instructor">Instructor</label>
-    <input type="text" name="instructor"/><br/>
+    <input type="text" name="program[instructor]"/><br/>
     <label for="start_date">Start Date</label>
-    <input type="date" name="start_date"/><br/>
+    <input type="date" name="program[start_date]"/><br/>
     <label for="end_date">End Date</label>
-    <input type="date" name="end_date"/><br/>
+    <input type="date" name="program[end_date]"/><br/>
     <label for="hour">Start Time</label>
-    <select name="hour">
+    <select name="program[hour]">
       <% 24.times do |t|%>
         <option value="<%= t %>"><%= t %></option>
       <% end %>
     </select><br/>
     <label for="type">Member/Non-Member</label>
-    <select name="type">
+    <select name="program[type]">
       <option value="Member">Member</option>
       <option value="Public">Public</option>  
     </select><br/>

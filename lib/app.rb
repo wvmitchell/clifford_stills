@@ -1,4 +1,5 @@
 require './lib/models/hours'
+require './lib/models/programs'
 
 class ClyffordStillsApp < Sinatra::Base
 
@@ -33,8 +34,13 @@ class ClyffordStillsApp < Sinatra::Base
     erb :directions
   end
 
-  get '/clyfford-still' do 
+  get '/clyfford-still' do
     erb :clyfford_still
+  end
+
+  get '/programs' do
+    programs = Database::Programs.all
+    erb :programs, locals: {programs: programs}
   end
 
   # ADMIN ROUTES
@@ -52,18 +58,14 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   post '/admin/programs' do
-    Database::Programs.update(params[:name], 
-                              params[:description], 
+    Database::Programs.update(params[:name],
+                              params[:description],
                               params[:instructor],
                               params[:start_date],
                               params[:end_date],
                               params[:hour],
                               params[:type])
     redirect '/admin/programs'
-  end
-
-  get '/programs' do
-    erb :programs
   end
 
 end
