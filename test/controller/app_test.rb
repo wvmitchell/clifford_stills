@@ -84,4 +84,15 @@ class ClyffordStillsAppTest < MiniTest::Test
     get '/directions'
     assert last_response.ok?
   end
+
+  def test_photo_gallery_page_exists
+    get '/photo_gallery'
+    assert last_response.ok?
+  end
+
+  def test_admin_photos_page_exists
+    get 'admin/photo_gallery'
+    assert last_response.ok?
+  end
+
 end
