@@ -45,6 +45,10 @@ class ClyffordStillsApp < Sinatra::Base
     erb :programs, locals: {programs: programs}
   end
 
+  get '/photo_gallery' do
+    erb :photo_gallery
+  end
+
   # ADMIN ROUTES
   get '/admin/hours' do
     erb :admin_hours
@@ -83,6 +87,17 @@ class ClyffordStillsApp < Sinatra::Base
 
   get '/thank-you' do
     erb :thank_you
+  end
+
+  get '/admin/photo_gallery' do
+    erb :admin_photos
+  end
+
+  post '/admin/photo_gallery' do
+    File.open('uploads/' + params['new_file'][:filename], 'w') do |f|
+      f.write(params['new_file'][:tempfile].read)
+    end
+    redirect '/admin/photo_gallery'
   end
 
 end
