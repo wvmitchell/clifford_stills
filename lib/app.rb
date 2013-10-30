@@ -47,4 +47,8 @@ class ClyffordStillsApp < Sinatra::Base
     erb :clyfford_still
   end
 
+  get '/contact-us' do
+    erb :contact_us
+  end
+
 end
