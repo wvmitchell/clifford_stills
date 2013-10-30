@@ -62,4 +62,8 @@ class ClyffordStillsApp < Sinatra::Base
     redirect '/admin/programs'
   end
 
+  get '/contact-us' do
+    erb :contact_us
+  end
+
 end
