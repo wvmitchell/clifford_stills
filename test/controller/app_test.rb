@@ -9,7 +9,7 @@ class ClyffordStillsAppTest < MiniTest::Test
   include Rack::Test::Methods
 
   def app
-    ClyffordStillsApp    
+    ClyffordStillsApp
   end
 
   def teardown
@@ -40,14 +40,15 @@ class ClyffordStillsAppTest < MiniTest::Test
 
   def test_admin_programs_page_exists
     get '/admin/programs'
-    assert last_response.ok?    
+    assert last_response.ok?
   end
 
   def test_admin_programs_changes_table
+    skip
     description = 'Terrible Program that does not help'
     instructor = 'Batman'
     Database::Programs.create_table_if_none
-    post '/admin/hours', :name => 'Best Program', 
+    post '/admin/hours', :name => 'Best Program',
                          :description => 'Awesome programs where you and your whole family can interact',
                          :instructor => 'Scuba Steve',
                          :start_date => 10-31-13,
