@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sqlite3'
 gem 'sequel'
+gem 'pony'
 
 group :test do
   gem 'minitest', require: false

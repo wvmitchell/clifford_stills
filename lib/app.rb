@@ -1,5 +1,7 @@
+require 'pony'
 require './lib/models/hours'
 require './lib/models/programs'
+require './lib/models/contact_us'
 
 class ClyffordStillsApp < Sinatra::Base
 
@@ -64,6 +66,23 @@ class ClyffordStillsApp < Sinatra::Base
 
   get '/contact-us' do
     erb :contact_us
+  end
+
+  post '/contact-us' do
+    Database::Contact.insert(params[:user])
+    Pony.mail :to => params[:user][:email],
+              :from => 'me@example.com',
+              :subject => 'Thanks for contacting us!',
+              :body => erb(:email, locals: {user: params[:user]})
+    Pony.mail :to => "navyosu@gmail.com",
+              :from => params[:user][:email],
+              :subject => "Issue Reported from #{params[:user][:name]}",
+              :body => params[:user][:issue]
+    redirect '/thank-you'
+  end
+
+  get '/thank-you' do
+    erb :thank_you
   end
 
 end
