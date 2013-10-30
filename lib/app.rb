@@ -3,7 +3,7 @@ require './lib/models/programs'
 
 class ClyffordStillsApp < Sinatra::Base
 
-  set :public, 'public'
+  set :public, 'lib/public'
 
   get '/' do
     #index page
@@ -58,13 +58,7 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   post '/admin/programs' do
-    Database::Programs.update(params[:name],
-                              params[:description],
-                              params[:instructor],
-                              params[:start_date],
-                              params[:end_date],
-                              params[:hour],
-                              params[:type])
+    Database::Programs.insert(params[:program])
     redirect '/admin/programs'
   end
 

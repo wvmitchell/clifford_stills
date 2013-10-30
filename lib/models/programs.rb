@@ -20,6 +20,7 @@ module Database
     end
 
     def self.insert(params)
+      create_table_if_none
       db_connection.from(:programs).insert(
         name: params[:name],
         description: params[:description],
