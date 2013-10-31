@@ -3,10 +3,20 @@ require './lib/models/hours'
 require './lib/models/programs'
 require './lib/models/contact_us'
 require './lib/models/photos'
+require './lib/models/users'
 
 class ClyffordStillsApp < Sinatra::Base
 
   set :public, 'lib/public'
+  enable :sessions
+
+  helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+    def current_user
+      @current_user ||= Database::Users.get(session[:user_id]) if session[:user_id]
+    end
+  end
 
   get '/' do
     erb :index

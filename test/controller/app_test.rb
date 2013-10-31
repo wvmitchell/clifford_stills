@@ -5,6 +5,7 @@ require './lib/app'
 require './lib/models/hours'
 require './lib/models/programs'
 require './lib/models/photos'
+require './lib/models/users'
 
 class ClyffordStillsAppTest < MiniTest::Test
   include Rack::Test::Methods
