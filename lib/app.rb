@@ -64,8 +64,16 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   post '/admin/programs' do
-    Database::Programs.insert(params[:program])
-    redirect '/admin/programs'
+    successful = Database::Programs.insert(params[:program])
+    if successful
+      redirect '/admin/programs'      
+    else
+      redirect '/admin/programs-error'
+    end
+  end
+
+  get '/admin/programs-error' do
+    erb :admin_programs_error
   end
 
   get '/contact-us' do

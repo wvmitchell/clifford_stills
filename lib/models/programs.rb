@@ -21,15 +21,25 @@ module Database
 
     def self.insert(params)
       create_table_if_none
-      db_connection.from(:programs).insert(
-        name: params[:name],
-        description: params[:description],
-        instructor: params[:instructor],
-        start_date: params[:start_date],
-        end_date: params[:end_date],
-        hour: params[:hour],
-        type: params[:type]
-      )
+      if params[:name] != "" && 
+         params[:name] != nil &&
+         params[:start_date] && 
+         params[:end_date] &&
+         params[:start_date] != "" &&
+         params[:end_date] != ""
+        db_connection.from(:programs).insert(
+          name: params[:name],
+          description: params[:description],
+          instructor: params[:instructor],
+          start_date: params[:start_date],
+          end_date: params[:end_date],
+          hour: params[:hour],
+          type: params[:type]
+        )
+        true
+      else
+        false
+      end
     end
 
     def self.update(params)
