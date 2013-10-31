@@ -26,7 +26,7 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
         <a href="/" title="Home" rel="home" id="logo"><img src="/images/header.gif" alt="Home" /></a>
     <a href="/" title="Home" rel="home"><span></span></a>
       </div></div><!-- /.section, /#header -->
-   
+
 
 
 
@@ -34,36 +34,40 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
     <div id="main-wrapper" ><div id="main" class="clearfix">
           <div id="content" class="column">
       <div class="section">
-        
+
                   <h1 class="title">Collection Photos</h1>
-                                
-        
+
+
 
         <div id="content-area">
           <div class="views_view view view-gallery view-id-gallery view-display-id-page_1 view-dom-id-1">
-  
-  
-  
-  
+
+
+
+
+      <% if photos.count > 0 %>
       <div class="view-content">
         <div class="views-row first odd">
          <div>
             <img src="/uploads/<%= photos[0][:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
          </div>
         </div>
-      <% photos[1..-2].each do |photo| %>
-        <% if photo[:id]%2 == 0 %>
-          <div class="views-row even">
-            <div>
-              <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+      <% end %>
+      <% if photos.count > 1 %>
+        <% photos[1..-2].each do |photo| %>
+          <% if photo[:id]%2 == 0 %>
+            <div class="views-row even">
+              <div>
+                <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+              </div>
             </div>
-          </div>
-        <% else %>
-          <div class="views-row odd">
-            <div>
-              <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+          <% else %>
+            <div class="views-row odd">
+              <div>
+                <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
       <% if photos.count > 1 %>
@@ -73,46 +77,17 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
           </div>
         </div>
       <% end %>
+      </div>
 
-  <!--    <div class="views-row even">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_04.jpg" title="1949 No. 1 (PH-385) - 1949, oil on canvas, 105 x 81 inches, © Estate of Clyfford Still" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-42"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_04.jpg" alt="" title="1949 No. 1 (PH-385) - 1949, oil on canvas, 105 x 81 inches, © Estate of Clyfford Still"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-      <div class="views-row odd">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_05.jpg" title="Untitled (PH-104) - 1952, pastel on paper, 13 x 11 inches, © Estate of Clyfford Still" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-43"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_05.jpg" alt="" title="Untitled (PH-104) - 1952, pastel on paper, 13 x 11 inches, © Estate of Clyfford Still"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-      <div class="views-row last even">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_06.jpg" title="1957 J No. 2 (PH 401) - 1957, oil on canvas, 113 x 155 inches, © Estate of Clyfford Still, Photo: Harholdt" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-44"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_06.jpg" alt="" title="1957 J No. 2 (PH 401) - 1957, oil on canvas, 113 x 155 inches, © Estate of Clyfford Still, Photo: Harholdt"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-    -->
-      </div>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
 </div><!-- /.view -->
         </div>
 
-        
+
 
       </div>
         <div id="content-bottom" class="clearfix">
@@ -123,7 +98,7 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 
       <div class="region region-sidebar-first column sidebar"><div class="section">
   <div id="block-menu-primary-links" class="block block-menu first region-odd odd region-count-1 count-1">
-  
+
   <div class="content">
     <ul class="menu"><li class="expanded first"><a href="/visit-us" title="VISIT US">VISIT US</a><ul class="menu"><li class="leaf first"><a href="/visit-us/tickets-admission-hours" title="TICKETS, ADMISSION &amp; HOURS">tickets, admission &amp; hours</a></li>
 <li class="leaf"><a href="/visit-us/directions" title="DIRECTIONS">directions</a></li>
