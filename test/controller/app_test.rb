@@ -85,6 +85,16 @@ class ClyffordStillsAppTest < MiniTest::Test
     assert last_response.ok?
   end
 
+  def test_contact_us_page_exists
+    get '/contact-us'
+    assert last_response.ok?
+  end
+
+  def test_thank_you_page_exists
+    get '/thank-you'
+    assert last_response.ok?
+  end
+
   def test_photo_gallery_page_exists
     get '/photo_gallery'
     assert last_response.ok?
