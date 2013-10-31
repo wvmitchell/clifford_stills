@@ -2,6 +2,7 @@ require 'pony'
 require './lib/models/hours'
 require './lib/models/programs'
 require './lib/models/contact_us'
+require './lib/models/photos'
 
 class ClyffordStillsApp < Sinatra::Base
 
@@ -46,7 +47,8 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   get '/photo_gallery' do
-    erb :photo_gallery
+    photos = Database::Photos.all
+    erb :photo_gallery, locals: {photos: photos}
   end
 
   # ADMIN ROUTES
@@ -94,7 +96,8 @@ class ClyffordStillsApp < Sinatra::Base
   end
 
   post '/admin/photo_gallery' do
-    File.open('uploads/' + params['new_file'][:filename], 'w') do |f|
+    Database::Photos.create({filename: params['new_file'][:filename]})
+    File.open('lib/public/uploads/' + params['new_file'][:filename], 'w') do |f|
       f.write(params['new_file'][:tempfile].read)
     end
     redirect '/admin/photo_gallery'

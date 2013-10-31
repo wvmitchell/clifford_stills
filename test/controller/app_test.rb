@@ -4,6 +4,7 @@ require 'rack/test'
 require './lib/app'
 require './lib/models/hours'
 require './lib/models/programs'
+require './lib/models/photos'
 
 class ClyffordStillsAppTest < MiniTest::Test
   include Rack::Test::Methods
@@ -13,9 +14,8 @@ class ClyffordStillsAppTest < MiniTest::Test
   end
 
   def teardown
-    if Database::Hours.db_connection.table_exists?(:hours)
-      Database::Hours.db_connection.drop_table(:hours)
-    end
+    Database::Hours.db_connection.drop_table(:hours) if Database::Hours.db_connection.table_exists?(:hours)
+    Database::Photos.db_connection.drop_table(:photos) if Database::Hours.db_connection.table_exists?(:hours)
   end
 
   def test_index
@@ -93,6 +93,11 @@ class ClyffordStillsAppTest < MiniTest::Test
   def test_admin_photos_page_exists
     get 'admin/photo_gallery'
     assert last_response.ok?
+  end
+
+  def test_uploaded_photos_added_to_db
+    post '/admin/photo_gallery', 'new_file' => Rack::Test::UploadedFile.new('me.jpg', 'image/jpeg')
+    assert_equal 'me.jpg', Database::Photos.first[:filename]
   end
 
 end

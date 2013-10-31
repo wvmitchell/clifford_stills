@@ -13,6 +13,18 @@ module Database
       db_connection.from(:photos).where(id: params[:id]).update(params)
     end
 
+    def self.first
+      db_connection.from(:photos).first
+    end
+
+    def self.all
+      if db_connection.table_exists?(:photos)
+        db_connection.from(:photos).to_a
+      else
+        []
+      end
+    end
+
     def self.create_table_if_none
       unless db_connection.table_exists?(:photos)
         db_connection.create_table :photos do

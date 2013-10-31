@@ -46,34 +46,35 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
   
   
       <div class="view-content">
-          <div class="views-row first odd">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_01.jpg" title="PH 77 - 1936, oil on canvas, 45 x 53 1/2 inches, © Estate of Clyfford Still" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-39"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_01.jpg" alt="" title="PH 77 - 1936, oil on canvas, 45 x 53 1/2 inches, © Estate of Clyfford Still"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-      <div class="views-row even">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_02.jpg" title="1937 (PH-343) - 1937, oil on canvas, 45 x 35 1/2 inches, © Estate of Clyfford Still, Photo: Harholdt" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-40"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_02.jpg" alt="" title="1937 (PH-343) - 1937, oil on canvas, 45 x 35 1/2 inches, © Estate of Clyfford Still, Photo: Harholdt"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-      <div class="views-row odd">
-      
-      <div>
-  
-    
-      <a href="https://www.clyffordstillmuseum.org/sites/default/files/images-photo/artwork_03.jpg" title="Untitled (PH-118) - 1947, oil on canvas, 69 x 53 inches, © Estate of Clyfford Still" class="colorbox imagefield imagefield-imagelink imagefield-field_photo_graphic" rel="gallery-41"><img src="https://www.clyffordstillmuseum.org/sites/default/files/imagecache/small/images-photo/artwork_03.jpg" alt="" title="Untitled (PH-118) - 1947, oil on canvas, 69 x 53 inches, © Estate of Clyfford Still"  class="imagecache imagecache-small" width="120" height="120" /></a>
-      </div>
-  
-    </div>
-      <div class="views-row even">
+        <div class="views-row first odd">
+         <div>
+            <img src="/uploads/<%= photos[0][:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+         </div>
+        </div>
+      <% photos[1..-2].each do |photo| %>
+        <% if photo[:id]%2 == 0 %>
+          <div class="views-row even">
+            <div>
+              <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+            </div>
+          </div>
+        <% else %>
+          <div class="views-row odd">
+            <div>
+              <img src="/uploads/<%= photo[:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <% if photos.count > 1 %>
+        <div class="views-row last even">
+          <div>
+            <img src="/uploads/<%= photos[-1][:filename] %>" class="imagecache imagecache-small" width="120" height="120" />
+          </div>
+        </div>
+      <% end %>
+
+  <!--    <div class="views-row even">
       
       <div>
   
@@ -100,6 +101,7 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
       </div>
   
     </div>
+    -->
       </div>
   
   
@@ -181,7 +183,6 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
   <div id="block-block-1" class="block block-block first region-odd even region-count-1 count-4">
   
   <div class="content">
-    <p><a href="http://www.scfd.org"><img alt="SCFD" src="/sites/default/files/editor-images/logo-sponsors.png" style="width: 54px; height: 84px; " /></a></p>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -197,16 +198,6 @@ jQuery.extend(Drupal.settings, { "basePath": "/", "colorbox": { "transition": "e
 </script>  </div>
 
   </div><!-- /.block -->
-<div id="block-block-10" class="block block-block last region-even odd region-count-2 count-5">
-  
-  <div class="content">
-    <div><strong><span data-scayt_word="CLYFFORD" data-scaytid="7">CLYFFORD</span> STILL MUSEUM</strong>
-<div>1250 <span data-scayt_word="Bannock" data-scaytid="8">Bannock</span> Street</div>
-<div>Denver, CO 80204</div>
-</div>
-<div><span data-scayt_word="tel" data-scaytid="9">tel</span> 720-354-4880<br />
-  <a href="mailto:%E2%80%A8info@clyffordstillmuseum.org">info@clyffordstillmuseum.org</a></div>
-  </div>
 
   </div><!-- /.block -->
 </div><!-- /.region -->
