@@ -46,7 +46,7 @@ class ClyffordStillsApp < Sinatra::Base
     erb :programs, locals: {programs: programs}
   end
 
-  get '/photo_gallery' do
+  get '/photo-gallery' do
     photos = Database::Photos.all
     erb :photo_gallery, locals: {photos: photos}
   end
@@ -99,16 +99,16 @@ class ClyffordStillsApp < Sinatra::Base
     erb :thank_you
   end
 
-  get '/admin/photo_gallery' do
+  get '/admin/photo-gallery' do
     erb :admin_photos
   end
 
-  post '/admin/photo_gallery' do
+  post '/admin/photo-gallery' do
     Database::Photos.create({filename: params['new_file'][:filename]})
     File.open('lib/public/uploads/' + params['new_file'][:filename], 'w') do |f|
       f.write(params['new_file'][:tempfile].read)
     end
-    redirect '/admin/photo_gallery'
+    redirect '/admin/photo-gallery'
   end
 
 end
